@@ -1,4 +1,4 @@
-package com.ruligandari.jetpacksubmission2.ui
+package com.ruligandari.jetpacksubmission2.ui.tvshows
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

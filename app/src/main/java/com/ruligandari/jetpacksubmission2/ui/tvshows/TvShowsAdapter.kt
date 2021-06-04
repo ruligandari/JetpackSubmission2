@@ -1,4 +1,4 @@
-package com.ruligandari.jetpacksubmission2.ui
+package com.ruligandari.jetpacksubmission2.ui.tvshows
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,14 +6,13 @@ import android.os.Build
 import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.ruligandari.jetpacksubmission2.R
 import com.ruligandari.jetpacksubmission2.data.source.local.TvShowsEntity
 import com.ruligandari.jetpacksubmission2.databinding.ItemTvShowsBinding
-import com.ruligandari.jetpacksubmission2.ui.detail.DetailTvShowViewModel
+import com.ruligandari.jetpacksubmission2.ui.detail.DetailTvShowsActivity
 
 class TvShowsAdapter: RecyclerView.Adapter<TvShowsAdapter.TvShowsViewHolder>() {
     private var listTvShows = ArrayList<TvShowsEntity>()
@@ -40,7 +39,7 @@ class TvShowsAdapter: RecyclerView.Adapter<TvShowsAdapter.TvShowsViewHolder>() {
                 tvItemRelease.text = data.first_air_date
                 tvItemDescription.text = data.overview
                 Glide.with(itemView.context)
-                    .load(BASE_URL+data.poster_path)
+                    .load(BASE_URL +data.poster_path)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
                     .into(imgPoster)
 
