@@ -13,16 +13,14 @@ class RemoteDataSource {
         @Volatile
         private var instance: RemoteDataSource?=null
 
-        fun getInstance(): RemoteDataSource=
-            instance?: synchronized(this){
-                RemoteDataSource().apply{
-                    instance = this
-                }
+        fun getInstance(): RemoteDataSource =
+            instance ?: synchronized(this){
+                RemoteDataSource().apply{ instance = this }
             }
     }
     suspend fun getPopularMovies(callback: LoadPopularMoviesCallback){
         EspressoIdlingResource.increment()
-        Client.apiInstance.getPopularMovies().await().result.let { listmovie ->
+        Client.apiInstance.getPopularMovies().await().results.let { listmovie ->
             callback.onAllMoviesReceived(listmovie)
             EspressoIdlingResource.decrement()
         }
@@ -30,7 +28,7 @@ class RemoteDataSource {
 
     suspend fun getPopularTvShows(callback: LoadPopularTvShowsCallback){
         EspressoIdlingResource.increment()
-        Client.apiInstance.getPopularTvShows().await().result.let { listTv ->
+        Client.apiInstance.getPopularTvShows().await().results.let { listTv ->
             callback.onAllTvShowsReceived(listTv)
             EspressoIdlingResource.decrement()
         }
@@ -57,7 +55,6 @@ class RemoteDataSource {
 
     interface LoadMoviesDetailCallback {
         fun onMoviesDetailReceived(movieResponse: MovieResponse)
-
     }
 
     interface LoadPopularTvShowsCallback {
@@ -66,7 +63,6 @@ class RemoteDataSource {
 
     interface LoadPopularMoviesCallback {
         fun onAllMoviesReceived(movieResponse: List<MovieResponse>)
-
     }
 }
 

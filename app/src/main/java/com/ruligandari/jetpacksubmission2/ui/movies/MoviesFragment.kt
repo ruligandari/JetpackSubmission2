@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ruligandari.jetpacksubmission2.viewmodel.ViewModelFactory
 import com.ruligandari.jetpacksubmission2.databinding.FragmentMoviesBinding
 
@@ -17,7 +18,7 @@ class MoviesFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentMoviesBinding = FragmentMoviesBinding.inflate(layoutInflater, container, false)
         return fragmentMoviesBinding!!.root
     }
@@ -37,6 +38,7 @@ class MoviesFragment: Fragment() {
                 }
             })
             with(binding.rvMovies){
+                layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 adapter = moviesAdapter
             }

@@ -15,7 +15,8 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
 
     companion object {
         @Volatile
-        private var instance : DataRepository?=null
+        private var instance : DataRepository? = null
+
         fun getInstance(remoteData: RemoteDataSource): DataRepository =
             instance ?: synchronized(this){
                 DataRepository(remoteData).apply { instance = this }
@@ -69,6 +70,7 @@ class DataRepository private constructor(private val remoteDataSource: RemoteDat
                 }
             })
         }
+
         return listTvShows
     }
 

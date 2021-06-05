@@ -5,7 +5,7 @@ data class MoviesEntity(
     var poster_path: String?=null,
     var title: String?=null,
     var release_date: String?=null,
-    var runtime: Int?=null,
+    var runtime: Int?=0,
     var vote_average: String?=null,
-    var overview: String?=null,
+    var overview: String?=null
 )

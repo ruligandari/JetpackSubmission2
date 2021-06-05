@@ -7,5 +7,5 @@ data class TvShowsEntity (
     var first_air_date: String?=null,
     var episode_run_time: List<Int>?=null,
     var vote_average: String?=null,
-    var overview: String?=null,
-        )
+    var overview: String?=null
+)

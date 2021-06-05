@@ -6,5 +6,5 @@ import com.ruligandari.jetpacksubmission2.data.DataRepository
 import com.ruligandari.jetpacksubmission2.data.source.local.MoviesEntity
 
 class DetailMoviesViewModel(private var mRepository: DataRepository): ViewModel() {
-    fun getListDetailMovies(moviesId: Int): LiveData<MoviesEntity> = mRepository.getMoviesDetail(moviesId)
+    fun getMoviesDetail(moviesId: Int): LiveData<MoviesEntity> = mRepository.getMoviesDetail(moviesId)
 }
