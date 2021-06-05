@@ -14,11 +14,7 @@ class TvShowsFragement: Fragment() {
     private var fragmentTvShowsBinding: FragmentTvShowsBinding? = null
     private val binding get() = fragmentTvShowsBinding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View {
         fragmentTvShowsBinding = FragmentTvShowsBinding.inflate(layoutInflater, container, false)
         return fragmentTvShowsBinding!!.root
     }

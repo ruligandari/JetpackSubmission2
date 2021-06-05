@@ -16,6 +16,7 @@ import com.ruligandari.jetpacksubmission2.ui.detail.DetailTvShowsActivity
 
 class TvShowsAdapter: RecyclerView.Adapter<TvShowsAdapter.TvShowsViewHolder>() {
     private var listTvShows = ArrayList<TvShowsEntity>()
+
     companion object{
         const val BASE_URL = "https://image.tmdb.org/t/p/original"
     }
@@ -35,17 +36,20 @@ class TvShowsAdapter: RecyclerView.Adapter<TvShowsAdapter.TvShowsViewHolder>() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                     tvItemDescription.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
                 }
+
                 tvItemTitle.text = data.name
                 tvItemRelease.text = data.first_air_date
                 tvItemDescription.text = data.overview
+                itemView.setOnClickListener{
+                    val intent = Intent(itemView.context, DetailTvShowsActivity:: class.java)
+                    intent.putExtra(DetailTvShowsActivity.EXTRA_TV_SHOW, data.id)
+                    itemView.context.startActivity(intent)
+                }
                 Glide.with(itemView.context)
                     .load(BASE_URL +data.poster_path)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
                     .into(imgPoster)
 
-                itemView.setOnClickListener{
-                    val intent = Intent(itemView.context, DetailTvShowsActivity:: class.java)
-                }
             }
         }
     }
@@ -57,6 +61,7 @@ class TvShowsAdapter: RecyclerView.Adapter<TvShowsAdapter.TvShowsViewHolder>() {
 
     override fun onBindViewHolder(holder: TvShowsViewHolder, position: Int) {
        val tvShows = listTvShows[position]
+        holder.bind(tvShows)
     }
 
     override fun getItemCount(): Int = listTvShows.size

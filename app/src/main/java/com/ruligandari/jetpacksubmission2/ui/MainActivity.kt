@@ -20,6 +20,5 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.tabs.setupWithViewPager(activityMainBinding.viewpager)
 
         supportActionBar?.elevation = 0f
-        actionBar?.setBackgroundDrawable(ColorDrawable(Color.rgb(0,77,170)))
     }
 }
