@@ -16,7 +16,7 @@ class ViewModelFactory private constructor(private val mRepository: DataReposito
 
         fun getInstance(): ViewModelFactory =
             instance ?: synchronized(this){
-                instance ?: ViewModelFactory(Injection.provideDatRepository())
+                instance ?: ViewModelFactory(Injection.provideDataRepository())
             }
     }
 
