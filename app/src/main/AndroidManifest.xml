@@ -9,15 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSubmission2">
-        <activity android:name=".ui.detail.DetailMoviesActivity"></activity>
-        <activity android:name=".ui.MainActivity">
+        <activity
+            android:name=".ui.SplashScreenActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.detail.DetailTvShowsActivity" />
+        <activity android:name=".ui.detail.DetailMoviesActivity"
+            android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity"/>
+        </activity>
+        <activity android:name=".ui.MainActivity"/>
+        <activity android:name=".ui.detail.DetailTvShowsActivity"
+            android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity"/>
+        </activity>
     </application>
 
 </manifest>
